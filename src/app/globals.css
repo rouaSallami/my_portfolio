@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root,
+html[data-theme="dark"] {
+  --background: #05010f;
+  --foreground: #ffffff;
+  --muted-foreground: rgba(255, 255, 255, 0.72);
+
+  --nav-bg: rgba(255, 255, 255, 0.05);
+  --nav-bg-strong: rgba(10, 6, 22, 0.72);
+  --menu-bg: rgba(19, 13, 36, 0.76);
+
+  --surface: rgba(255, 255, 255, 0.06);
+  --border-soft: rgba(255, 255, 255, 0.12);
+
+  --primary: #7c3aed;
+  --accent: #d946ef;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html[data-theme="light"] {
+  --background: #f6f3ff;
+  --foreground: #140f25;
+  --muted-foreground: rgba(20, 15, 37, 0.72);
+
+  --nav-bg: rgba(255, 255, 255, 0.72);
+  --nav-bg-strong: rgba(255, 255, 255, 0.86);
+  --menu-bg: rgba(255, 255, 255, 0.82);
+
+  --surface: rgba(255, 255, 255, 0.9);
+  --border-soft: rgba(20, 15, 37, 0.08);
+
+  --primary: #7c3aed;
+  --accent: #c026d3;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at top center, rgba(124, 58, 237, 0.12), transparent 34%),
+    linear-gradient(to bottom, var(--background), var(--background));
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+/* Section spacing for fixed navbar */
+section {
+  scroll-margin-top: 110px;
+}
+
+/* Optional pretty selection */
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: white;
 }
