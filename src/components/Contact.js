@@ -1,3 +1,6 @@
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations/translations";
+
 import {
   Mail,
   Phone,
@@ -8,20 +11,24 @@ import {
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export default function Contact() {
+
+  const { language } = useLanguage();
+const t = translations[language];
+
   const contacts = [
     {
       icon: <Mail size={20} />,
-      title: "Email",
+      title: t.contact.email,
       value: "rouasallami5@gmail.com",
     },
     {
       icon: <Phone size={20} />,
-      title: "Phone",
+      title: t.contact.phone,
       value: "+216 51 113 398",
     },
     {
       icon: <MapPin size={20} />,
-      title: "Location",
+      title: t.contact.location,
       value: "Tunisia",
     },
   ];
@@ -37,18 +44,18 @@ export default function Contact() {
         {/* Header */}
         <div className="mb-12 text-center">
           <div className="mb-5 inline-flex rounded-full border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--primary)]">
-            Contact
+            {t.contact.badge}
           </div>
 
           <h2 className="text-4xl font-black sm:text-5xl">
-            Let&apos;s{" "}
+            {t.contact.title1}{" "}
             <span className="bg-gradient-to-r from-fuchsia-500 to-violet-600 bg-clip-text text-transparent">
-              Work Together
+              {t.contact.title2}
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-[var(--muted-foreground)]">
-            Have a project in mind? Feel free to contact me.
+            {t.contact.description}
           </p>
         </div>
 
@@ -96,19 +103,19 @@ export default function Contact() {
             <div className="space-y-4">
               <input
                 type="text"
-                placeholder="Your Name"
+                placeholder={t.contact.namePlaceholder}
                 className="w-full rounded-2xl border border-[var(--border-soft)] bg-transparent px-4 py-3 outline-none"
               />
 
               <input
                 type="email"
-                placeholder="Your Email"
+                placeholder={t.contact.emailPlaceholder}
                 className="w-full rounded-2xl border border-[var(--border-soft)] bg-transparent px-4 py-3 outline-none"
               />
 
               <textarea
                 rows="5"
-                placeholder="Your Message"
+                placeholder={t.contact.messagePlaceholder}
                 className="w-full rounded-2xl border border-[var(--border-soft)] bg-transparent px-4 py-3 outline-none"
               />
 
@@ -116,7 +123,7 @@ export default function Contact() {
                 type="submit"
                 className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-fuchsia-600 to-violet-600 px-6 py-3 font-medium text-white"
               >
-                Send Message
+                {t.contact.send}
                 <Send size={18} />
               </button>
             </div>

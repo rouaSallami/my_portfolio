@@ -1,5 +1,8 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations/translations";
+
 import Link from "next/link";
 import {
   FaGithub,
@@ -13,10 +16,19 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
+
+  const { language } = useLanguage();
+const t = translations[language];
+
   const year = new Date().getFullYear();
 
   // Navigation simple
-  const links = ["About", "Projects", "Experience", "Contact"];
+  const links = [
+  { label: t.nav.about, href: "#about" },
+  { label: t.nav.projects, href: "#projects" },
+  { label: t.nav.skills, href: "#skills" },
+  { label: t.nav.contactMe, href: "#contact" },
+];
 
   // Socials
   const socials = [
@@ -46,8 +58,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-6 max-w-md text-base text-[var(--muted-foreground)] leading-relaxed">
-              Full-stack developer passionnée par la création d'interfaces fluides 
-              et de solutions robustes. On transforme vos idées en code.
+              {t.footer.bio}
             </p>
 
             {/* Social Icons centered on mobile */}
@@ -72,16 +83,16 @@ export default function Footer() {
           {/* Menu - Centered on Mobile / Start on MD */}
           <div className="lg:col-span-3 flex flex-col items-center md:items-start lg:ml-auto">
             <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">
-              Menu
+              {t.footer.menu}
             </h3>
             <ul className="mt-8 space-y-4 flex flex-col items-center md:items-start">
               {links.map((link) => (
-                <li key={link}>
+                <li key={link.href}>
                   <a
-                    href={`#${link.toLowerCase()}`}
+                    href={link.href}
                     className="group flex items-center text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
                   >
-                    {link}
+                    {link.label}
                     <FaExternalLinkAlt size={10} className="ml-2 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
                   </a>
                 </li>
@@ -98,18 +109,18 @@ export default function Footer() {
               
               <h3 className="flex items-center gap-2 text-sm font-bold uppercase text-[var(--foreground)] relative z-10">
                 <FaPaperPlane className="text-[var(--primary)]" />
-                Start a conversation
+                {t.footer.conversation}
               </h3>
 
               <p className="mt-4 text-sm text-[var(--muted-foreground)] relative z-10">
-                Disponible pour des projets en freelance ou des opportunités full-time.
+                {t.footer.available}
               </p>
 
               <a
                 href="mailto:contact@roua.dev"
                 className="mt-6 block w-full rounded-2xl bg-gradient-to-r from-fuchsia-600 to-violet-600 py-4 text-center text-sm font-bold text-white hover:shadow-lg hover:shadow-fuchsia-500/20 transition-all active:scale-95 relative z-10"
               >
-                Envoyer un mail
+                {t.footer.sendMail}
               </a>
             </div>
           </div>
@@ -118,16 +129,16 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-20 flex flex-col items-center gap-6 border-t border-white/5 pt-10 md:flex-row md:justify-between">
           <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--muted-foreground)]">
-            © {year} ROUA • Made in Tunisia
+            © {year} ROUA • {t.footer.madeIn}
           </p>
 
           <div className="flex items-center gap-2">
             <span className="text-[10px] text-[var(--muted-foreground)] uppercase tracking-widest">
-              Built with
+              {t.footer.builtWith}
             </span>
             <FaHeart className="text-fuchsia-500 animate-pulse" />
             <span className="text-[10px] text-[var(--muted-foreground)] uppercase tracking-widest">
-              in Tunisia
+              {t.footer.madeIn}
             </span>
           </div>
         </div>

@@ -1,38 +1,42 @@
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations/translations";
+
 import { FaGithub } from "react-icons/fa";
 import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
+
+  const { language } = useLanguage();
+const t = translations[language];
+
   const projects = [
-    {
-      title: "Coffee Shop Website",
-      description:
-        "Modern coffee shop website with product showcase, menu management and responsive user experience.",
-      tech: ["Next.js", "Tailwind CSS", "Laravel", "MySQL"],
-      image: "/projects/coffee.png",
-      github: "#",
-      live: "#",
-    },
+  {
+    title: t.projectCards.coffeeTitle,
+    description: t.projectCards.coffeeDesc,
+    tech: ["Next.js", "Tailwind CSS", "Laravel", "MySQL"],
+    image: "/projects/coffee.png",
+    github: "#",
+    live: "#",
+  },
 
-    {
-      title: "Ophthalmologist Website",
-      description:
-        "Professional medical website featuring services, appointments and patient information.",
-      tech: ["Laravel", "Tailwind CSS", "MySQL"],
-      image: "/projects/ophta.png",
-      github: "#",
-      live: "#",
-    },
+  {
+    title: t.projectCards.ophtaTitle,
+    description: t.projectCards.ophtaDesc,
+    tech: ["Laravel", "Tailwind CSS", "MySQL"],
+    image: "/projects/ophta.png",
+    github: "#",
+    live: "#",
+  },
 
-    {
-      title: "Portfolio Website",
-      description:
-        "Personal portfolio showcasing projects, skills and development experience.",
-      tech: ["Next.js", "Tailwind CSS"],
-      image: "/projects/portfolio.png",
-      github: "#",
-      live: "#",
-    },
-  ];
+  {
+    title: t.projectCards.portfolioTitle,
+    description: t.projectCards.portfolioDesc,
+    tech: ["Next.js", "Tailwind CSS"],
+    image: "/projects/portfolio.png",
+    github: "#",
+    live: "#",
+  },
+];
 
   return (
     <section
@@ -46,19 +50,18 @@ export default function Projects() {
         {/* Header */}
         <div className="mb-10 text-center">
           <div className="mb-5 inline-flex items-center rounded-full border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--primary)] backdrop-blur-xl">
-            My Work
+            {t.projects.badge}
           </div>
 
           <h2 className="text-4xl font-black sm:text-5xl">
-            Featured{" "}
+            {t.projects.title1}{" "}
             <span className="bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-600 bg-clip-text text-transparent">
-              Projects
+              {t.projects.title2}
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-[var(--muted-foreground)]">
-            A selection of projects that showcase my skills in frontend,
-            backend, and full-stack web development.
+            {t.projects.description}
           </p>
         </div>
 
@@ -67,7 +70,7 @@ export default function Projects() {
           {projects.map((project) => (
             <div
               key={project.title}
-              className="group overflow-hidden rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(168,85,247,0.18)]"
+              className="group overflow-hidden rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-fuchsia-500/30 hover:shadow-[0_0_40px_rgba(168,85,247,0.18)]"
             >
               {/* Image */}
               <div className="overflow-hidden">
@@ -106,7 +109,7 @@ export default function Projects() {
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-600 to-violet-600 px-4 py-2 text-sm font-medium text-white transition hover:scale-105"
                   >
-                    Live Demo
+                    {t.projects.liveDemo}
                     <ArrowUpRight size={16} />
                   </a>
 
@@ -117,7 +120,7 @@ export default function Projects() {
                     className="inline-flex items-center gap-2 rounded-xl border border-[var(--border-soft)] px-4 py-2 text-sm font-medium transition hover:bg-white/5"
                   >
                     <FaGithub size={16} />
-                    Github
+                    {t.projects.github}
                   </a>
                 </div>
               </div>

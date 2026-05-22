@@ -1,23 +1,30 @@
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations/translations";
+
 import { Code2, Laptop, Rocket } from "lucide-react";
 
 export default function About() {
+
+  const { language } = useLanguage();
+const t = translations[language];
+
   const features = [
-    {
-      icon: <Code2 size={22} />,
-      title: "Clean Code",
-      text: "Writing organized, reusable, and maintainable code.",
-    },
-    {
-      icon: <Laptop size={22} />,
-      title: "Responsive Design",
-      text: "Building websites that work perfectly on all devices.",
-    },
-    {
-      icon: <Rocket size={22} />,
-      title: "Performance",
-      text: "Creating fast and optimized web applications.",
-    },
-  ];
+  {
+    icon: <Code2 size={22} />,
+    title: t.about.cleanCode,
+    text: t.about.cleanCodeDesc,
+  },
+  {
+    icon: <Laptop size={22} />,
+    title: t.about.responsive,
+    text: t.about.responsiveDesc,
+  },
+  {
+    icon: <Rocket size={22} />,
+    title: t.about.performance,
+    text: t.about.performanceDesc,
+  },
+];
 
   return (
     <section
@@ -29,27 +36,23 @@ export default function About() {
         <div>
           <div className="mb-6 flex justify-center lg:justify-start">
   <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--primary)] backdrop-blur-xl">
-    About Me
+    {t.about.badge}
   </div>
 </div>
 
           <h2 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
-            I&apos;m a passionate{" "}
+            {t.about.title1}{" "}
             <span className="bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-600 bg-clip-text text-transparent">
-              web developer
+              {t.about.title2}
             </span>
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-8 text-[var(--muted-foreground)]">
-            I create modern, responsive, and user-friendly websites using clean
-            code and creative design. I enjoy transforming ideas into real web
-            applications that are fast, functional, and visually attractive.
+            {t.about.p1}
           </p>
 
           <p className="mt-4 max-w-xl text-base leading-8 text-[var(--muted-foreground)]">
-            My focus is building smooth digital experiences with technologies
-            like React, Next.js, Tailwind CSS, TypeScript, and modern frontend
-            tools.
+            {t.about.p2}
           </p>
         </div>
 

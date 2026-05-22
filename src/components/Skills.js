@@ -1,3 +1,6 @@
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations/translations";
+
 import {
   Code2,
   Database,
@@ -6,9 +9,15 @@ import {
 } from "lucide-react";
 
 export default function Skills() {
+
+  const { language } = useLanguage();
+const t = translations[language];
+
+
   const skillGroups = [
   {
-    title: "Frontend",
+    icon: <Code2 size={24} />,
+    title: t.skills.frontend,
     skills: [
       "HTML",
       "CSS",
@@ -19,16 +28,22 @@ export default function Skills() {
       "Tailwind CSS",
     ],
   },
+
   {
-    title: "Backend",
+    icon: <Server size={24} />,
+    title: t.skills.backend,
     skills: ["Laravel", "Express.js"],
   },
+
   {
-    title: "Database",
+    icon: <Database size={24} />,
+    title: t.skills.database,
     skills: ["MySQL", "MongoDB"],
   },
+
   {
-    title: "Tools",
+    icon: <Wrench size={24} />,
+    title: t.skills.tools,
     skills: [
       "Git",
       "GitHub",
@@ -37,16 +52,20 @@ export default function Skills() {
       "Figma",
     ],
   },
+
   {
-    title: "UI / UX",
+    icon: <Code2 size={24} />,
+    title: t.skills.design,
     skills: [
       "Responsive Design",
       "UI Design",
       "User Experience",
     ],
   },
+
   {
-    title: "AI Tools",
+    icon: <Code2 size={24} />,
+    title: t.skills.ai,
     skills: [
       "ChatGPT",
       "AI Productivity",
@@ -67,18 +86,18 @@ export default function Skills() {
         {/* Header */}
         <div className="mb-10 text-center">
           <div className="mb-5 inline-flex rounded-full border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--primary)] backdrop-blur-xl">
-            Skills
+            {t.skills.badge}
           </div>
 
           <h2 className="text-4xl font-black sm:text-5xl">
-            My{" "}
+            {t.skills.title1}{" "}
             <span className="bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-600 bg-clip-text text-transparent">
-              Tech Stack
+              {t.skills.title2}
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-[var(--muted-foreground)]">
-            Technologies and tools I use to build modern web applications.
+            {t.skills.description}
           </p>
         </div>
 

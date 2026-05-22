@@ -1,8 +1,15 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations/translations";
+
 import { ArrowUpRight, Download, Sparkles } from "lucide-react";
 
 export default function Hero() {
+
+  const { language } = useLanguage();
+const t = translations[language];
+
   const hero = {
     name: "I build modern & scalable",
     description:
@@ -26,22 +33,22 @@ export default function Hero() {
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--primary)] backdrop-blur-xl">
             <Sparkles size={14} />
-            Fullstack Developer
+            {t.hero.badge}
           </div>
 
           {/* Title */}
           <h1 className="text-5xl font-black leading-tight tracking-tight text-[var(--foreground)] sm:text-6xl lg:text-6xl">
-            {hero.name}
+            {t.hero.title1}
             <br />
 
             <span className="bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-600 bg-clip-text text-transparent">
-              web applications.
+              {t.hero.title2}
             </span>
           </h1>
 
           {/* Description */}
           <p className="mt-6 max-w-xl text-base leading-8 text-[var(--muted-foreground)]">
-            {hero.description}
+            {t.hero.description}
           </p>
 
           {/* Buttons */}
@@ -50,7 +57,7 @@ export default function Hero() {
               href="#projects"
               className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-fuchsia-600 to-violet-600 px-7 py-4 text-sm font-semibold text-white shadow-[0_0_35px_rgba(168,85,247,0.35)] transition duration-300 hover:scale-[1.04]"
             >
-              View My Work
+              {t.hero.viewWork}
 
               <ArrowUpRight
                 size={16}
@@ -62,7 +69,7 @@ export default function Hero() {
               href="/cv.pdf"
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] px-7 py-4 text-sm font-semibold text-[var(--foreground)] backdrop-blur-xl transition duration-300 hover:scale-[1.03]"
             >
-              Download CV
+              {t.hero.downloadCV}
               <Download size={16} />
             </a>
           </div>
@@ -70,10 +77,10 @@ export default function Hero() {
           {/* Stats */}
           <div className="mt-14 grid grid-cols-3 gap-4">
             {[
-              ["10+", "Projects"],
-              ["3+", "Years"],
-              ["100%", "Passion"],
-            ].map(([num, label]) => (
+  ["3", t.hero.stat1],
+  ["Next.js", t.hero.stat2],
+  ["Laravel", t.hero.stat3],
+].map(([num, label]) => (
               <div
                 key={label}
                 className="rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-5 backdrop-blur-xl"
