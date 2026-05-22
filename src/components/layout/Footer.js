@@ -20,10 +20,10 @@ export default function Footer() {
 
   // Socials
   const socials = [
-    { icon: FaGithub, href: "https://github.com/votre-username", label: "GitHub" },
-    { icon: FaLinkedinIn, href: "https://linkedin.com/in/votre-profile", label: "LinkedIn" },
+    { icon: FaGithub, href: "https://github.com/rouaSallami", label: "GitHub" },
+    { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/roua-sallami-962456373/", label: "LinkedIn" },
     { icon: FaTwitter, href: "#", label: "Twitter" },
-    { icon: FaInstagram, href: "#", label: "Instagram" },
+    { icon: FaInstagram, href: "https://www.instagram.com/ro_ua_s/", label: "Instagram" },
   ];
 
   return (
@@ -36,7 +36,7 @@ export default function Footer() {
           
           {/* Brand & Bio */}
           <div className="lg:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
-            <Link href="#home" className="flex items-center gap-3 group w-fit">
+            <Link href="#hero" className="flex items-center gap-3 group w-fit">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-500 to-violet-700 text-white font-bold text-xl shadow-lg transition-transform group-hover:scale-110">
                 R
               </div>
