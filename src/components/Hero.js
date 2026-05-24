@@ -85,7 +85,7 @@ const t = translations[language];
                 key={label}
                 className="rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-5 backdrop-blur-xl"
               >
-                <p className="text-3xl font-bold text-[var(--foreground)]">
+                <p className="sm:text-3xl font-bold text-[var(--foreground)]">
                   {num}
                 </p>
 
